@@ -119,7 +119,7 @@ fun DeviceListDetail(
 
     ModalNavigationDrawer(
         drawerState = drawerState, gesturesEnabled = drawerState.isOpen, drawerContent = {
-            ModalDrawerSheet {
+            ModalDrawerSheet(drawerContainerColor = MaterialTheme.colorScheme.background) {
                 DrawerContent(showHiddenDevices = showHiddenDevices, addDevice = {
                     coroutineScope.launch {
                         addDevice()

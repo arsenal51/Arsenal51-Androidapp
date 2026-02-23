@@ -186,6 +186,7 @@ fun DeviceWebView(
     chromeClient.state = state
 
     fun resetWebview() {
+        webView.clearCache(true)
         webView.loadUrl("about:blank")
         navigator.reset()
         Log.i(TAG, "Navigating to ${device.getDeviceUrl()}")

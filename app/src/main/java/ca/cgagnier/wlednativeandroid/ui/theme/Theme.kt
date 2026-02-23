@@ -172,7 +172,7 @@ private val highContrastLightColorScheme = lightColorScheme(
     surfaceContainerLowest = surfaceContainerLowestLightHighContrast,
     surfaceContainerLow = surfaceContainerLowLightHighContrast,
     surfaceContainer = surfaceContainerLightHighContrast,
-    surfaceContainerHigh = surfaceContainerHighLightHighContrast,
+    surfaceContainerHigh = surfaceContainerHighLightMediumContrast,
     surfaceContainerHighest = surfaceContainerHighestLightHighContrast,
 )
 
@@ -273,7 +273,7 @@ fun WLEDNativeTheme(
 ) {
     WLEDNativeTheme(
         darkTheme = true,
-        dynamicColor = dynamicColor,
+        dynamicColor = false,
         content = content
     )
 }
@@ -331,21 +331,21 @@ fun DeviceTheme(
     themeViewModel: ThemeViewModel = hiltViewModel(),
     content: @Composable () -> Unit
 ) {
-    val stateInfo by device.stateInfo
+    val darkTheme = true
+    val view = LocalView.current
+    val colorScheme = darkScheme
 
-    val theme by themeViewModel.theme.collectAsStateWithLifecycle()
-    val darkTheme = when (theme) {
-        ThemeSettings.Auto -> isSystemInDarkTheme()
-        ThemeSettings.Dark -> true
-        else -> false
-    }
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = AppTypography,
+        content = content
+    )
 
-    DynamicMaterialTheme(
-        seedColor = Color(getColorFromDeviceState(stateInfo)),
-        isDark = darkTheme,
-        style = if (device.isOnline) PaletteStyle.Vibrant else PaletteStyle.Neutral,
-        animate = true
-    ) {
-        content()
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars =
+                !darkTheme // negate darkTheme
+        }
     }
 }
