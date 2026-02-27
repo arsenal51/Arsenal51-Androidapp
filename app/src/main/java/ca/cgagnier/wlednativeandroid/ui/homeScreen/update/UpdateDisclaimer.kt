@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ca.cgagnier.wlednativeandroid.R
-import ca.cgagnier.wlednativeandroid.ui.theme.WLEDNativeTheme
+import ca.cgagnier.wlednativeandroid.ui.theme.OrbiterNativeTheme
 
 @Composable
 fun UpdateDisclaimerDialog(
@@ -79,7 +79,7 @@ private fun UpdateDisclaimerDialogContent() {
 @Preview(showBackground = true)
 @Composable
 fun UpdateDisclaimerDialogPreview() {
-    WLEDNativeTheme(darkTheme = isSystemInDarkTheme()) {
+    OrbiterNativeTheme(darkTheme = isSystemInDarkTheme()) {
         UpdateDisclaimerDialog()
     }
 }

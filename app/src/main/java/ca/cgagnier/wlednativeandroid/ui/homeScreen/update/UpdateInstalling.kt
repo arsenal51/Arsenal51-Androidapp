@@ -37,7 +37,7 @@ import ca.cgagnier.wlednativeandroid.model.VersionWithAssets
 import ca.cgagnier.wlednativeandroid.service.websocket.DeviceWithState
 import ca.cgagnier.wlednativeandroid.ui.components.deviceName
 import ca.cgagnier.wlednativeandroid.ui.preview.getPreviewDevice
-import ca.cgagnier.wlednativeandroid.ui.theme.WLEDNativeTheme
+import ca.cgagnier.wlednativeandroid.ui.theme.OrbiterNativeTheme
 
 @Composable
 fun UpdateInstallingDialog(
@@ -116,7 +116,12 @@ fun UpdateInstallingDialog(
                 }
             }
         },
-        icon = {},
+        icon = {
+            Icon(
+                painter = painterResource(R.drawable.ic_twotone_check_circle_outline_24),
+                contentDescription = stringResource(R.string.update_installing)
+            )
+        },
     )
 }
 
@@ -228,32 +233,32 @@ class SampleStateStepProvider : PreviewParameterProvider<UpdateInstallingState> 
         UpdateInstallingState(
             step = UpdateInstallingStep.Downloading(progress = 50),
             canDismiss = true,
-            assetName = "WLED-1.2.3-WOW.bin"
+            assetName = "Orbiter-1.2.3-WOW.bin"
         ),
         UpdateInstallingState(
             step = UpdateInstallingStep.Installing,
             canDismiss = false,
-            assetName = "WLED-1.2.3-WOW.bin"
+            assetName = "Orbiter-1.2.3-WOW.bin"
         ),
         UpdateInstallingState(
             step = UpdateInstallingStep.NoCompatibleVersion,
             canDismiss = true,
-            assetName = "WLED-1.2.3-WOW.bin"
+            assetName = "Orbiter-1.2.3-WOW.bin"
         ),
         UpdateInstallingState(
             step = UpdateInstallingStep.Error("Something went wrong", showError = false),
             canDismiss = true,
-            assetName = "WLED-1.2.3-WOW.bin"
+            assetName = "Orbiter-1.2.3-WOW.bin"
         ),
         UpdateInstallingState(
             step = UpdateInstallingStep.Error("Something went wrong", showError = true),
             canDismiss = true,
-            assetName = "WLED-1.2.3-WOW.bin"
+            assetName = "Orbiter-1.2.3-WOW.bin"
         ),
         UpdateInstallingState(
             step = UpdateInstallingStep.Done,
             canDismiss = true,
-            assetName = "WLED-1.2.3-WOW.bin"
+            assetName = "Orbiter-1.2.3-WOW.bin"
         ),
     )
 }
@@ -263,7 +268,7 @@ class SampleStateStepProvider : PreviewParameterProvider<UpdateInstallingState> 
 fun UpdateInstallingDialogStepStartingPreview(
     @PreviewParameter(SampleStateStepProvider::class) state: UpdateInstallingState
 ) {
-    WLEDNativeTheme(darkTheme = isSystemInDarkTheme()) {
+    OrbiterNativeTheme(darkTheme = isSystemInDarkTheme()) {
         UpdateInstallingDialog(
             state = state,
             device = getPreviewDevice(),

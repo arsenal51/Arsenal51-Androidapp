@@ -11,7 +11,7 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import ca.cgagnier.wlednativeandroid.FileUploadContract
 import ca.cgagnier.wlednativeandroid.FileUploadContractResult
-import ca.cgagnier.wlednativeandroid.ui.theme.WLEDNativeTheme
+import ca.cgagnier.wlednativeandroid.ui.theme.OrbiterNativeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
-            WLEDNativeTheme {
+            OrbiterNativeTheme {
                 MainNavHost()
             }
         }

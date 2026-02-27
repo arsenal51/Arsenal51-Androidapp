@@ -39,6 +39,11 @@ object UpdateSourceRegistry {
             brandPattern = "QuinLED",
             githubOwner = "intermittech",
             githubRepo = "QuinLED-Firmware"
+        ), UpdateSourceDefinition(
+            type = UpdateSourceType.CUSTOM,
+            brandPattern = "Orbiter",
+            githubOwner = "arsenal51",
+            githubRepo = "WLED-Arsenal51"
         )
     )
 

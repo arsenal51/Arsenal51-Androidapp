@@ -160,10 +160,10 @@ class WebsocketClient(
         val request = Request.Builder()
             .url(websocketUrl)
             // For some reason, adding User-Agent here is ESSENTIAL for the app to be compatible
-            // with WLED 0.14.2. This is due to some flaw in the version of ESPAsyncWebServer
-            // included in that version of WLED.
+            // with Orbiter 0.14.2. This is due to some flaw in the version of ESPAsyncWebServer
+            // included in that version of Orbiter.
             // TODO: Extract the user agent to a constant somewhere to avoid magic string.
-            .header("User-Agent", "WLED-Android")
+            .header("User-Agent", "Orbiter-Android")
             .build()
 
         Log.d(TAG, "Connecting to ${deviceState.device.address}")

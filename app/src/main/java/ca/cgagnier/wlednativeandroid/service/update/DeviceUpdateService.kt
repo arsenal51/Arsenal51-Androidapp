@@ -33,6 +33,8 @@ class DeviceUpdateService(
     private var couldDetermineAsset: Boolean = false
     private lateinit var asset: Asset
 
+    private val brandName = device.stateInfo.value?.info?.brand ?: "WLED"
+
     init {
         // Try to use the release variable, but fallback to the legacy platform method for
         // compatibility with WLED older than 0.15.0
@@ -55,7 +57,7 @@ class DeviceUpdateService(
         val combined = "${versionWithAssets.version.tagName}_${release}"
         val versionWithRelease =
             if (combined.startsWith("v", ignoreCase = true)) combined.drop(1) else combined
-        assetName = "WLED_${versionWithRelease}.bin"
+        assetName = "${brandName}_${versionWithRelease}.bin"
         return findAsset(assetName)
     }
 
@@ -76,14 +78,15 @@ class DeviceUpdateService(
             "${versionWithAssets.version.tagName}_${deviceInfo.platformName?.uppercase()}"
         val versionWithPlatform =
             if (combined.startsWith("v", ignoreCase = true)) combined.drop(1) else combined
-        assetName = "WLED_${versionWithPlatform}.bin"
+        assetName = "${brandName}_${versionWithPlatform}.bin"
         return findAsset(assetName)
     }
 
     private fun findAsset(assetName: String): Boolean {
         for (asset in versionWithAssets.assets) {
-            if (asset.name == assetName) {
+            if (asset.name.equals(assetName, ignoreCase = true)) {
                 this.asset = asset
+                this.assetName = asset.name
                 couldDetermineAsset = true
                 return true
             }

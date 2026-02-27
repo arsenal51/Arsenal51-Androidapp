@@ -31,7 +31,7 @@ class DeviceListDetailViewModel @Inject constructor(
     networkManager: NetworkConnectivityManager,
     private val deviceFirstContactService: DeviceFirstContactService,
 ) : AndroidViewModel(application), DefaultLifecycleObserver {
-    val isWLEDCaptivePortal = networkManager.isWLEDCaptivePortal
+    val isOrbiterCaptivePortal = networkManager.isOrbiterCaptivePortal
 
     val showHiddenDevices = preferencesRepository.showHiddenDevices
         .stateIn(

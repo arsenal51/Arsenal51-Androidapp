@@ -95,7 +95,7 @@ fun DeviceListDetail(
     }
 
     val showHiddenDevices by viewModel.showHiddenDevices.collectAsStateWithLifecycle()
-    val isWLEDCaptivePortal by viewModel.isWLEDCaptivePortal.collectAsStateWithLifecycle()
+    val isOrbiterCaptivePortal by viewModel.isOrbiterCaptivePortal.collectAsStateWithLifecycle()
     val isAddDeviceDialogVisible by viewModel.isAddDeviceDialogVisible.collectAsStateWithLifecycle()
 
     val addDevice = { viewModel.showAddDeviceDialog() }
@@ -150,7 +150,7 @@ fun DeviceListDetail(
                     AnimatedPane {
                         DeviceList(
                             selectedDevice,
-                            isWLEDCaptivePortal = isWLEDCaptivePortal,
+                            isOrbiterCaptivePortal = isOrbiterCaptivePortal,
                             onItemClick = navigateToDeviceDetail,
                             onAddDevice = addDevice,
                             onShowHiddenDevices = {

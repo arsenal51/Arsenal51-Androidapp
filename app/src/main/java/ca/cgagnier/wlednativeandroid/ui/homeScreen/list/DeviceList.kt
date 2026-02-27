@@ -64,7 +64,7 @@ private const val DEVICE_OFFLINE_TIMEOUT_MS = 60000L
 @Composable
 fun DeviceList(
     selectedDevice: DeviceWithState?,
-    isWLEDCaptivePortal: Boolean = false,
+    isOrbiterCaptivePortal: Boolean = false,
     onItemClick: (DeviceWithState) -> Unit,
     onItemEdit: (DeviceWithState) -> Unit,
     onAddDevice: () -> Unit,
@@ -162,7 +162,7 @@ fun DeviceList(
                             .height(0.dp)
                     )
                 }
-                if (visibleDevices.isEmpty() && !isWLEDCaptivePortal) {
+                if (visibleDevices.isEmpty() && !isOrbiterCaptivePortal) {
                     // Don't show the empty page during the initial load to improve the user
                     // experience.
                     if (isInitialLoading) {
@@ -180,7 +180,7 @@ fun DeviceList(
                         }
                     }
                 } else {
-                    if (isWLEDCaptivePortal) {
+                    if (isOrbiterCaptivePortal) {
                         item(key = "captive_portal") {
                             val device = getApModeDeviceWithState()
                             DeviceAPListItem(

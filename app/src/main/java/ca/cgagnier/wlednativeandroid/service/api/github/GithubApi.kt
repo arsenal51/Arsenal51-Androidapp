@@ -69,7 +69,7 @@ class GithubApi @Inject constructor(private val apiEndpoints: GithubApiEndpoints
 
     companion object {
         private const val TAG = "github-release"
-        const val REPO_OWNER = "Aircoookie"
-        const val REPO_NAME = "WLED"
+        const val REPO_OWNER = "arsenal51"
+        const val REPO_NAME = "WLED-Arsenal51"
     }
 }

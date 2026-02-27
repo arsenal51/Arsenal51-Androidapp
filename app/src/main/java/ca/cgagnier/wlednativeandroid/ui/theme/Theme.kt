@@ -265,13 +265,13 @@ val unspecified_scheme = ColorFamily(
 )
 
 @Composable
-fun WLEDNativeTheme(
+fun OrbiterNativeTheme(
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     themeViewModel: ThemeViewModel = hiltViewModel(),
     content: @Composable () -> Unit
 ) {
-    WLEDNativeTheme(
+    OrbiterNativeTheme(
         darkTheme = true,
         dynamicColor = false,
         content = content
@@ -279,7 +279,7 @@ fun WLEDNativeTheme(
 }
 
 @Composable
-fun WLEDNativeTheme(
+fun OrbiterNativeTheme(
     darkTheme: Boolean,
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

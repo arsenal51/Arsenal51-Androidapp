@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.LinkProperties
 import android.net.Network
 import android.util.Log
-import ca.cgagnier.wlednativeandroid.model.DEFAULT_WLED_AP_IP
+import ca.cgagnier.wlednativeandroid.model.DEFAULT_ORBITER_AP_IP
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
@@ -59,10 +59,10 @@ class NetworkConnectivityManager(context: Context, externalScope: CoroutineScope
     )
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val isWLEDCaptivePortal = networkEvents.mapLatest { networkProperties ->
+    val isOrbiterCaptivePortal = networkEvents.mapLatest { networkProperties ->
         for (dnsServer in networkProperties.linkProperties?.dnsServers ?: emptyList()) {
-            if (dnsServer.hostAddress == DEFAULT_WLED_AP_IP) {
-                Log.d(TAG, "This is a WLED captive portal")
+            if (dnsServer.hostAddress == DEFAULT_ORBITER_AP_IP) {
+                Log.d(TAG, "This is an Orbiter captive portal")
                 return@mapLatest true
             }
         }

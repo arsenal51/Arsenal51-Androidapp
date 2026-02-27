@@ -610,7 +610,7 @@ private fun handleHttpDownload(
         DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
     )
 
-    val fileName = createWledFilename(device, url, contentDisposition, mimetype)
+    val fileName = createOrbiterFilename(device, url, contentDisposition, mimetype)
 
     request.setDestinationInExternalPublicDir(
         Environment.DIRECTORY_DOWNLOADS,
@@ -727,7 +727,7 @@ private fun handleDataUriDownload(
         val decodedBytes = Base64.decode(base64Data, Base64.DEFAULT)
 
         // Use helper to generate consistent filename
-        val fileName = createWledFilename(device, null, null, mimetype)
+        val fileName = createOrbiterFilename(device, null, null, mimetype)
 
         // Save using MediaStore
         val contentValues = ContentValues().apply {
@@ -760,10 +760,10 @@ private fun handleDataUriDownload(
 }
 
 /**
- * Shared helper to generate consistent filenames for WLED exports.
+ * Shared helper to generate consistent filenames for Orbiter exports.
  * Removes illegal characters but keeps spaces for readability.
  */
-private fun createWledFilename(
+private fun createOrbiterFilename(
     device: Device,
     url: String?,
     contentDisposition: String?,
@@ -788,10 +788,10 @@ private fun createWledFilename(
     val baseName = if (url != null && contentDisposition != null) {
         URLUtil.guessFileName(url, contentDisposition, mimetype)
     } else {
-        "wled_backup.$extension"
+        "orbiter_backup.$extension"
     }
 
-    // Result example: "My_Light_20231025_wled_backup.json"
+    // Result example: "My_Light_20231025_orbiter_backup.json"
     // Note: If baseName already has the extension, we are good.
     return "${sanitizedDeviceName}_${currentDate}_$baseName"
 }

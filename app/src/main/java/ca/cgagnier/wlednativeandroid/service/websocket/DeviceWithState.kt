@@ -39,7 +39,7 @@ enum class WebsocketStatus {
 }
 
 /**
- * Get a DeviceWithState that can be used to represent a temporary WLED device in AP mode.
+ * Get a DeviceWithState that can be used to represent a temporary Orbiter device in AP mode.
  */
 fun getApModeDeviceWithState(): DeviceWithState {
     val device = DeviceWithState(
